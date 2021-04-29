@@ -20,7 +20,7 @@
 		DELETE FROM shoes WHERE seq = #{seq}
 	</delete>
 	
-	<delete id="deleteAllShoes">
+	<delete id="deleteAllShoes"> 
 		DELETE FROM shoes WHERE seq = #{seq}
 	</delete>
 
