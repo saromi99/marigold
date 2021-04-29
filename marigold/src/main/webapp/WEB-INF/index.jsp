@@ -8,7 +8,7 @@
 <style>
 #container {
 	margin: 0 auto;
-	border: 1px black solid;
+	border: 2px black solid;
 }
 </style>
 </head>
