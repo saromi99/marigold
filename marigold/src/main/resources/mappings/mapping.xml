@@ -5,23 +5,23 @@
 <mapper namespace="ShoesDAO">
 
 	<insert id="insertShoes">
-		INSERT INTO boardtb VALUES((select nvl(max(seq), 0) + 1 from boardtb), #{title}, #{writer}, #{content}, sysdate, 0)
+		INSERT INTO shoes VALUES((select nvl(max(seq), 0) + 1 from boardtb), #{title}, #{writer}, #{content}, sysdate, 0)
 	</insert>
 
 	<update id="updateShoes">
-		UPDATE boardTb SET title = #{title}, content = #{content} WHERE seq = #{seq}
+		UPDATE shoes SET title = #{title}, content = #{content} WHERE seq = #{seq}
 	</update>
 	
 	<update id="updateCount">
-		UPDATE boardTb SET cnt = cnt + 1 WHERE seq = #{seq}
+		UPDATE shoes SET cnt = cnt + 1 WHERE seq = #{seq}
 	</update>
 
 	<delete id="deleteOneShoes">
-		DELETE FROM boardtb WHERE seq = #{seq}
+		DELETE FROM shoes WHERE seq = #{seq}
 	</delete>
 	
 	<delete id="deleteAllShoes">
-		DELETE FROM boardtb WHERE seq = #{seq}
+		DELETE FROM shoes WHERE seq = #{seq}
 	</delete>
 
 </mapper>
