@@ -1,27 +1,28 @@
 package com.marigold.shoes.domain;
 
 public class ShoesVO {
-	private int article;
-	private int firstCategory;
-	private int secondCategory;
-	private int thirdCategory;
+	
+	private String article;
+	private String firstCategory;
+	private String secondCategory;
+	private String thirdCategory;
 	private String productName;
 	private String specialDay;
 	private int season;
 	private String color;
-	private int material;
+	private String material;
 	private int price;
 	private int heel;
 	private int footSize;
-	private int brand;
+	private String brand;
 	private String modelId;
 	
 	public ShoesVO() {
 		super();
 	}
 	
-	public ShoesVO(int article, int firstCategory, int secondCategory, int thirdCategory, String productName,
-			String color, int material, int price, int heel, int footSize, int brand) {
+	public ShoesVO(String article, String firstCategory, String secondCategory, String thirdCategory,
+			String productName, String color, String material, int price, int heel, int footSize, String brand) {
 		super();
 		this.article = article;
 		this.firstCategory = firstCategory;
@@ -36,9 +37,9 @@ public class ShoesVO {
 		this.brand = brand;
 	}
 
-	public ShoesVO(int article, int firstCategory, int secondCategory, int thirdCategory, String productName,
-			String specialDay, int season, String color, int material, int price, int heel, int footSize, int brand,
-			String modelId) {
+	public ShoesVO(String article, String firstCategory, String secondCategory, String thirdCategory,
+			String productName, String specialDay, int season, String color, String material, int price, int heel,
+			int footSize, String brand, String modelId) {
 		super();
 		this.article = article;
 		this.firstCategory = firstCategory;
@@ -56,35 +57,35 @@ public class ShoesVO {
 		this.modelId = modelId;
 	}
 
-	public int getArticle() {
+	public String getArticle() {
 		return article;
 	}
 
-	public void setArticle(int article) {
+	public void setArticle(String article) {
 		this.article = article;
 	}
 
-	public int getFirstCategory() {
+	public String getFirstCategory() {
 		return firstCategory;
 	}
 
-	public void setFirstCategory(int firstCategory) {
+	public void setFirstCategory(String firstCategory) {
 		this.firstCategory = firstCategory;
 	}
 
-	public int getSecondCategory() {
+	public String getSecondCategory() {
 		return secondCategory;
 	}
 
-	public void setSecondCategory(int secondCategory) {
+	public void setSecondCategory(String secondCategory) {
 		this.secondCategory = secondCategory;
 	}
 
-	public int getThirdCategory() {
+	public String getThirdCategory() {
 		return thirdCategory;
 	}
 
-	public void setThirdCategory(int thirdCategory) {
+	public void setThirdCategory(String thirdCategory) {
 		this.thirdCategory = thirdCategory;
 	}
 
@@ -120,11 +121,11 @@ public class ShoesVO {
 		this.color = color;
 	}
 
-	public int getMaterial() {
+	public String getMaterial() {
 		return material;
 	}
 
-	public void setMaterial(int material) {
+	public void setMaterial(String material) {
 		this.material = material;
 	}
 
@@ -152,11 +153,11 @@ public class ShoesVO {
 		this.footSize = footSize;
 	}
 
-	public int getBrand() {
+	public String getBrand() {
 		return brand;
 	}
 
-	public void setBrand(int brand) {
+	public void setBrand(String brand) {
 		this.brand = brand;
 	}
 
@@ -172,20 +173,20 @@ public class ShoesVO {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + article;
-		result = prime * result + brand;
+		result = prime * result + ((article == null) ? 0 : article.hashCode());
+		result = prime * result + ((brand == null) ? 0 : brand.hashCode());
 		result = prime * result + ((color == null) ? 0 : color.hashCode());
-		result = prime * result + firstCategory;
+		result = prime * result + ((firstCategory == null) ? 0 : firstCategory.hashCode());
 		result = prime * result + footSize;
 		result = prime * result + heel;
-		result = prime * result + material;
+		result = prime * result + ((material == null) ? 0 : material.hashCode());
 		result = prime * result + ((modelId == null) ? 0 : modelId.hashCode());
 		result = prime * result + price;
 		result = prime * result + ((productName == null) ? 0 : productName.hashCode());
 		result = prime * result + season;
-		result = prime * result + secondCategory;
+		result = prime * result + ((secondCategory == null) ? 0 : secondCategory.hashCode());
 		result = prime * result + ((specialDay == null) ? 0 : specialDay.hashCode());
-		result = prime * result + thirdCategory;
+		result = prime * result + ((thirdCategory == null) ? 0 : thirdCategory.hashCode());
 		return result;
 	}
 
@@ -198,22 +199,34 @@ public class ShoesVO {
 		if (getClass() != obj.getClass())
 			return false;
 		ShoesVO other = (ShoesVO) obj;
-		if (article != other.article)
+		if (article == null) {
+			if (other.article != null)
+				return false;
+		} else if (!article.equals(other.article))
 			return false;
-		if (brand != other.brand)
+		if (brand == null) {
+			if (other.brand != null)
+				return false;
+		} else if (!brand.equals(other.brand))
 			return false;
 		if (color == null) {
 			if (other.color != null)
 				return false;
 		} else if (!color.equals(other.color))
 			return false;
-		if (firstCategory != other.firstCategory)
+		if (firstCategory == null) {
+			if (other.firstCategory != null)
+				return false;
+		} else if (!firstCategory.equals(other.firstCategory))
 			return false;
 		if (footSize != other.footSize)
 			return false;
 		if (heel != other.heel)
 			return false;
-		if (material != other.material)
+		if (material == null) {
+			if (other.material != null)
+				return false;
+		} else if (!material.equals(other.material))
 			return false;
 		if (modelId == null) {
 			if (other.modelId != null)
@@ -229,14 +242,20 @@ public class ShoesVO {
 			return false;
 		if (season != other.season)
 			return false;
-		if (secondCategory != other.secondCategory)
+		if (secondCategory == null) {
+			if (other.secondCategory != null)
+				return false;
+		} else if (!secondCategory.equals(other.secondCategory))
 			return false;
 		if (specialDay == null) {
 			if (other.specialDay != null)
 				return false;
 		} else if (!specialDay.equals(other.specialDay))
 			return false;
-		if (thirdCategory != other.thirdCategory)
+		if (thirdCategory == null) {
+			if (other.thirdCategory != null)
+				return false;
+		} else if (!thirdCategory.equals(other.thirdCategory))
 			return false;
 		return true;
 	}

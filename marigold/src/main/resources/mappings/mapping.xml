@@ -11,17 +11,51 @@
 	<update id="updateShoes">
 		UPDATE shoes SET title = #{title}, content = #{content} WHERE seq = #{seq}
 	</update>
-	
-	<update id="updateCount">
-		UPDATE shoes SET cnt = cnt + 1 WHERE seq = #{seq}
-	</update>
 
 	<delete id="deleteOneShoes">
-		DELETE FROM shoes WHERE seq = #{seq}
+		DELETE FROM shoes WHERE article = #{article}
 	</delete>
 	
 	<delete id="deleteAllShoes">
-		DELETE FROM shoes WHERE seq = #{seq}
+		DELETE FROM shoes
 	</delete>
+	
+	
+	<select id="getCount" resultType="Integer">
+		SELECT count(*) FROM shoes
+	</select>
+
+	<select id="getList" resultType="shoes">
+		SELECT * FROM shoes order by article
+	</select>
+	
+	<select id="getOne" resultType="shoes">
+		SELECT * FROM shoes where article = #{article}
+	</select>
+	
+	
+	<select id="searchFirstCategoryList" resultType="shoes">
+		SELECT * FROM shoes where firstCategory = #{firstCategory} order by article
+	</select>
+	
+	<select id="searchSecondCategoryList" resultType="shoes">
+		SELECT * FROM shoes where secondCategory = #{secondCategory} order by article
+	</select>
+	
+	<select id="searchThirdCategoryList" resultType="shoes">
+		SELECT * FROM shoes where thirdCategory = #{thirdCategory} order by article
+	</select>
+	
+	<select id="searchProductNameList" resultType="shoes">
+		SELECT * FROM shoes where productName = #{productName} order by article
+	</select>
+	
+	<select id="searchSpecialDayList" resultType="shoes">
+		SELECT * FROM shoes where specialDay = #{specialDay} order by article
+	</select>
+	
+	<select id="searchSpecialDayList" resultType="shoes">
+		SELECT * FROM shoes where specialDay = #{specialDay} order by article
+	</select>
 
 </mapper>
