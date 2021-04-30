@@ -11,7 +11,8 @@ public interface ShoesDAO {
 	
 	public ShoesVO getOne(ShoesVO vo);
 	public List<ShoesVO> getList(ShoesVO vo);
-	 
+	
+	public List<ShoesVO> searchShoes(ShoesVO vo);
 	public List<ShoesVO> searchFirstCategoryList(ShoesVO vo); 
 	public List<ShoesVO> searchSecondCategoryList(ShoesVO vo);
 	public List<ShoesVO> searchThirdCategoryList(ShoesVO vo);

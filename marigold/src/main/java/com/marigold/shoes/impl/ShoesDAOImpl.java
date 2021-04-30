@@ -49,6 +49,13 @@ public class ShoesDAOImpl implements ShoesDAO {
 	public ShoesVO getOne(ShoesVO vo) {
 		return session.selectOne("ShoesDAO.getOne", vo);
 	}
+	
+	@Override
+	public List<ShoesVO> searchShoes(ShoesVO vo) {
+		List<ShoesVO> list = null;
+		
+		return null;
+	}
 
 	@Override
 	public List<ShoesVO> searchFirstCategoryList(ShoesVO vo) {

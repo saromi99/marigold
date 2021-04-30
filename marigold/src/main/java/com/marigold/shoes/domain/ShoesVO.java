@@ -20,9 +20,9 @@ public class ShoesVO {
 	public ShoesVO() {
 		super();
 	}
-	
+
 	public ShoesVO(String article, String firstCategory, String secondCategory, String thirdCategory,
-			String productName, String color, String material, int price, int heel, int footSize, String brand) {
+			String productName, String color, String material, int price, String brand) {
 		super();
 		this.article = article;
 		this.firstCategory = firstCategory;
@@ -32,8 +32,6 @@ public class ShoesVO {
 		this.color = color;
 		this.material = material;
 		this.price = price;
-		this.heel = heel;
-		this.footSize = footSize;
 		this.brand = brand;
 	}
 

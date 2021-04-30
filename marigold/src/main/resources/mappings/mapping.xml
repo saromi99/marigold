@@ -5,11 +5,11 @@
 <mapper namespace="ShoesDAO">
 
 	<insert id="insertShoes">
-		INSERT INTO shoes VALUES((select nvl(max(seq), 0) + 1 from shoes), #{title}, #{writer}, #{content}, sysdate, 0)
+		INSERT INTO shoes VALUES( , , , , , , , , , , , , , )
 	</insert>
 
 	<update id="updateShoes">
-		UPDATE shoes SET title = #{title}, content = #{content} WHERE seq = #{seq}
+		
 	</update>
 
 	<delete id="deleteOneShoes">
@@ -35,23 +35,32 @@
 	
 	
 	<select id="searchFirstCategoryList" resultType="shoes">
-		SELECT * FROM shoes where firstCategory = #{firstCategory} order by article
+		select s.*, fc.FirstCategory from shoes s, FirstCategory fc
+		    where s.FirstCategory = fc.FirstCategory
+		        and ((fc.FirstCategory = '%'||#{searchKeyword}||'%') or (fc.FirstCategorycon = '%'||#{searchKeyword}||'%'))
+		    order by s.article;
 	</select>
 	
 	<select id="searchSecondCategoryList" resultType="shoes">
-		SELECT * FROM shoes where secondCategory = #{secondCategory} order by article
+		select s.*, sc.secondCategory from shoes s, secondCategory sc
+		    where s.secondCategory = sc.secondCategory
+		        and ((sc.secondCategory = '%'||#{searchKeyword}||'%') or (sc.secondCategorycon = '%'||#{searchKeyword}||'%'))
+		    order by s.article;
 	</select>
 	
 	<select id="searchThirdCategoryList" resultType="shoes">
-		SELECT * FROM shoes where thirdCategory = #{thirdCategory} order by article
+		select s.*, tc.thirdCategory from shoes s, thirdCategory tc
+		    where s.thirdCategory = tc.thirdCategory
+		        and ((tc.thirdCategory = '%'||#{searchKeyword}||'%') or (tc.thirdCategorycon = '%'||#{searchKeyword}||'%'))
+		    order by s.article;
 	</select>
 	
 	<select id="searchProductNameList" resultType="shoes">
-		SELECT * FROM shoes where productName = #{productName} order by article
+		SELECT * FROM shoes where productName = '%'||#{searchKeyword}||'%' order by article
 	</select>
 	
 	<select id="searchSpecialDayList" resultType="shoes">
-		SELECT * FROM shoes where specialDay = #{specialDay} order by article
+		SELECT * FROM shoes where specialDay = '%'||#{searchKeyword}||'%' order by article
 	</select>
 	
 	<select id="searchSpecialDayList" resultType="shoes">
