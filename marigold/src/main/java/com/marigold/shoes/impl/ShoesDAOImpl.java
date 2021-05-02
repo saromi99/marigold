@@ -89,44 +89,37 @@ public class ShoesDAOImpl implements ShoesDAO {
 
 	@Override
 	public List<ShoesVO> searchColorList(ShoesVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return session.selectList("ShoesDAO.searchColorList", vo);
 	}
 
 	@Override
 	public List<ShoesVO> searchMaterialList(ShoesVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return session.selectList("ShoesDAO.searchMaterialList", vo);
 	}
 
 	@Override
 	public List<ShoesVO> searchPriceList(ShoesVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return session.selectList("ShoesDAO.searchPriceList", vo);
 	}
 
 	@Override
 	public List<ShoesVO> searchHeelList(ShoesVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return session.selectList("ShoesDAO.searchHeelList", vo);
 	}
 
 	@Override
 	public List<ShoesVO> searchFootSizeList(ShoesVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return session.selectList("ShoesDAO.searchFootSizeList", vo);
 	}
 
 	@Override
 	public List<ShoesVO> searchBrandList(ShoesVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return session.selectList("ShoesDAO.searchBrandList", vo);
 	}
 
 	@Override
 	public List<ShoesVO> searchModelIdList(ShoesVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return session.selectList("ShoesDAO.searchModelIdList", vo);
 	}
 
 }

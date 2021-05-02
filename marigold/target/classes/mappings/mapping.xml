@@ -35,21 +35,21 @@
 	
 	
 	<select id="searchFirstCategoryList" resultType="shoes">
-		select s.*, fc.FirstCategory from shoes s, FirstCategory fc
+		select s.*, fc.FirstCategorycon from shoes s, FirstCategory fc
 		    where s.FirstCategory = fc.FirstCategory
 		        and ((fc.FirstCategory = '%'||#{searchKeyword}||'%') or (fc.FirstCategorycon = '%'||#{searchKeyword}||'%'))
 		    order by s.article;
 	</select>
 	
 	<select id="searchSecondCategoryList" resultType="shoes">
-		select s.*, sc.secondCategory from shoes s, secondCategory sc
+		select s.*, sc.secondCategorycon from shoes s, secondCategory sc
 		    where s.secondCategory = sc.secondCategory
 		        and ((sc.secondCategory = '%'||#{searchKeyword}||'%') or (sc.secondCategorycon = '%'||#{searchKeyword}||'%'))
 		    order by s.article;
 	</select>
 	
 	<select id="searchThirdCategoryList" resultType="shoes">
-		select s.*, tc.thirdCategory from shoes s, thirdCategory tc
+		select s.*, tc.thirdCategorycon from shoes s, thirdCategory tc
 		    where s.thirdCategory = tc.thirdCategory
 		        and ((tc.thirdCategory = '%'||#{searchKeyword}||'%') or (tc.thirdCategorycon = '%'||#{searchKeyword}||'%'))
 		    order by s.article;
@@ -63,8 +63,48 @@
 		SELECT * FROM shoes where specialDay = '%'||#{searchKeyword}||'%' order by article
 	</select>
 	
-	<select id="searchSpecialDayList" resultType="shoes">
-		SELECT * FROM shoes where specialDay = #{specialDay} order by article
+	<select id="searchSeasonList" resultType="shoes">
+		select s.*, ss.seasoncon from shoes s, season ss
+		    where s.season = ss.season
+		        and ((ss.season = '%'||#{searchKeyword}||'%') or (ss.seasoncon = '%'||#{searchKeyword}||'%'))
+		    order by s.article;
+	</select>
+	
+	<select id="searchColorList" resultType="shoes">
+		select s.*, c.colorcon from shoes s, color c
+		    where s.color = tc.color
+		        and ((tc.color = '%'||#{searchKeyword}||'%') or (tc.colorCon = '%'||#{searchKeyword}||'%') or (tc.colorSim = '%'||#{searchKeyword}||'%'))
+		    order by s.article;
+	</select>
+	
+	<select id="searchMaterialList" resultType="shoes">
+		select s.*, m.materialCon from shoes s, material m
+		    where s.material = m.material
+		        and ((m.material = '%'||#{searchKeyword}||'%') or (m.materialCon = '%'||#{searchKeyword}||'%'))
+		    order by s.article;
+	</select>
+	
+	<select id="searchPriceList" resultType="shoes">
+		SELECT * FROM shoes where price = '%'||#{searchKeyword}||'%' order by article
+	</select>
+	
+	<select id="searchHeelList" resultType="shoes">
+		SELECT * FROM shoes where heel = '%'||#{searchKeyword}||'%' order by article
+	</select>
+	
+	<select id="searchFootSizeList" resultType="shoes">
+		SELECT * FROM shoes where footSize = '%'||#{searchKeyword}||'%' order by article
+	</select>
+	
+	<select id="searchBrandList" resultType="shoes">
+		select s.*, tc.brandcon from shoes s, brand b
+		    where s.brand = b.brand
+		        and ((b.brand = '%'||#{searchKeyword}||'%') or (b.brandcon = '%'||#{searchKeyword}||'%'))
+		    order by s.article;
+	</select>
+	
+	<select id="searchModelIdList" resultType="shoes">
+		SELECT * FROM shoes where modelId = '%'||#{searchKeyword}||'%' order by article
 	</select>
 
 </mapper>
