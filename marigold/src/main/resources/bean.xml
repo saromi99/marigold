@@ -25,9 +25,23 @@
 		<constructor-arg ref="hikariConfig" />
 	</bean>
 	
-	<context:component-scan base-package="com.marigold.shoes"></context:component-scan>
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:sql-map-config.xml" />
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:mappings/mapping.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+	
+	<context:component-scan base-package="com.marigold.shoes" />
 	
 	<mvc:annotation-driven />
-	
-	
+	<aop:aspectj-autoproxy />
+
 </beans>

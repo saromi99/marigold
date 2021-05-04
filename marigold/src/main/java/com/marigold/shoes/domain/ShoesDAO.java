@@ -26,4 +26,6 @@ public interface ShoesDAO {
 	public List<ShoesVO> searchFootSizeList(ShoesVO vo);
 	public List<ShoesVO> searchBrandList(ShoesVO vo);
 	public List<ShoesVO> searchModelIdList(ShoesVO vo);
+	
+	public List<ShoesVO> checkFirstCategoryList(List<ShoesVO> chkList);
 }

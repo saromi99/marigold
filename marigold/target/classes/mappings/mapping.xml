@@ -33,78 +33,176 @@
 		SELECT * FROM shoes where article = #{article}
 	</select>
 	
+<!-- 	
+	<select id="searchList" resultType="shoes">
+		select distinct s.* from shoes s
+			<if test="searchKeyword != null and searchKeyword.length() == 1">
+				, season ss
+				<where>
+					(s.season = ss.season and (ss.seasonCon like '%'||#{searchKeyword}||'%'))
+				</where>
+			</if>
+			<if test="s.firstCategory != null and s.secondCategory != null and s.thirdCategory != null">
+				, firstCategory fc, secondCategory sc, thirdCategory tc
+				<where>
+					(s.firstCategory = fc.firstCategory and (fc.FirstCategoryCon like '%'||#{searchKeyword}||'%'))
+					or (s.secondCategory = sc.secondCategory and (sc.SecondCategoryCon like '%'||#{searchKeyword}||'%'))
+					or (s.thirdCategory = tc.thirdCategory and (tc.ThirdCategoryCon like '%'||#{searchKeyword}||'%'))
+				</where>
+			</if>
+			<if test="s.color != null">
+				, color c
+				<where>
+					(s.color = c.color and ((c.colorCon like '%'||#{searchKeyword}||'%') or (c.colorSim like '%'||#{searchKeyword}||'%')))
+				</where>
+			</if>
+			<if test="s.material != null">
+				, material m
+				<where>
+					(s.material = m.material and (m.materialCon like '%'||#{searchKeyword}||'%'))
+				</where>
+			</if>
+			<if test="s.brand != null">
+				, brand b
+				<where>
+					(s.brand = b.brand and (b.brandCon like '%'||#{searchKeyword}||'%'))
+				</where>
+			</if>
+	</select>
+ -->
+ 	
+	<select id="searchProductNameList" resultType="shoes">
+		SELECT * FROM shoes where productName like '%'||#{searchKeyword}||'%' order by article
+	</select>
+	
+	<select id="searchSpecialDayList" resultType="shoes">
+		SELECT * FROM shoes where specialDay like '%'||#{searchKeyword}||'%' order by article
+	</select>
+	
+	<select id="searchPriceList" resultType="shoes">
+		SELECT * FROM shoes where price like '%'||#{searchKeyword}||'%' order by article
+	</select>
+	
+	<select id="searchHeelList" resultType="shoes">
+		SELECT * FROM shoes where heel like '%'||#{searchKeyword}||'%' order by article
+	</select>
+	
+	<select id="searchFootSizeList" resultType="shoes">
+		SELECT * FROM shoes where footSize like '%'||#{searchKeyword}||'%' order by article
+	</select>
+	
+	<select id="searchModelIdList" resultType="shoes">
+		SELECT * FROM shoes where modelId like '%'||#{searchKeyword}||'%' order by article
+	</select>
 	
 	<select id="searchFirstCategoryList" resultType="shoes">
 		select s.*, fc.FirstCategorycon from shoes s, FirstCategory fc
 		    where s.FirstCategory = fc.FirstCategory
-		        and ((fc.FirstCategory = '%'||#{searchKeyword}||'%') or (fc.FirstCategorycon = '%'||#{searchKeyword}||'%'))
-		    order by s.article;
+		        and ((fc.FirstCategory like '%'||#{searchKeyword}||'%') or (fc.FirstCategorycon like '%'||#{searchKeyword}||'%'))
+		    order by s.article
 	</select>
 	
 	<select id="searchSecondCategoryList" resultType="shoes">
 		select s.*, sc.secondCategorycon from shoes s, secondCategory sc
 		    where s.secondCategory = sc.secondCategory
-		        and ((sc.secondCategory = '%'||#{searchKeyword}||'%') or (sc.secondCategorycon = '%'||#{searchKeyword}||'%'))
-		    order by s.article;
+		        and ((sc.secondCategory like '%'||#{searchKeyword}||'%') or (sc.secondCategorycon like '%'||#{searchKeyword}||'%'))
+		    order by s.article
 	</select>
 	
 	<select id="searchThirdCategoryList" resultType="shoes">
 		select s.*, tc.thirdCategorycon from shoes s, thirdCategory tc
 		    where s.thirdCategory = tc.thirdCategory
-		        and ((tc.thirdCategory = '%'||#{searchKeyword}||'%') or (tc.thirdCategorycon = '%'||#{searchKeyword}||'%'))
-		    order by s.article;
-	</select>
-	
-	<select id="searchProductNameList" resultType="shoes">
-		SELECT * FROM shoes where productName = '%'||#{searchKeyword}||'%' order by article
-	</select>
-	
-	<select id="searchSpecialDayList" resultType="shoes">
-		SELECT * FROM shoes where specialDay = '%'||#{searchKeyword}||'%' order by article
+		        and ((tc.thirdCategory like '%'||#{searchKeyword}||'%') or (tc.thirdCategorycon like '%'||#{searchKeyword}||'%'))
+		    order by s.article
 	</select>
 	
 	<select id="searchSeasonList" resultType="shoes">
 		select s.*, ss.seasoncon from shoes s, season ss
 		    where s.season = ss.season
-		        and ((ss.season = '%'||#{searchKeyword}||'%') or (ss.seasoncon = '%'||#{searchKeyword}||'%'))
-		    order by s.article;
+		        and ((ss.season like '%'||#{searchKeyword}||'%') or (ss.seasoncon like '%'||#{searchKeyword}||'%'))
+		    order by s.article
 	</select>
 	
 	<select id="searchColorList" resultType="shoes">
 		select s.*, c.colorcon from shoes s, color c
 		    where s.color = tc.color
-		        and ((tc.color = '%'||#{searchKeyword}||'%') or (tc.colorCon = '%'||#{searchKeyword}||'%') or (tc.colorSim = '%'||#{searchKeyword}||'%'))
-		    order by s.article;
+		        and ((tc.color like '%'||#{searchKeyword}||'%') or (tc.colorCon like '%'||#{searchKeyword}||'%') or (c.colorSim like '%'||#{searchKeyword}||'%'))
+		    order by s.article
 	</select>
 	
 	<select id="searchMaterialList" resultType="shoes">
 		select s.*, m.materialCon from shoes s, material m
 		    where s.material = m.material
-		        and ((m.material = '%'||#{searchKeyword}||'%') or (m.materialCon = '%'||#{searchKeyword}||'%'))
-		    order by s.article;
-	</select>
-	
-	<select id="searchPriceList" resultType="shoes">
-		SELECT * FROM shoes where price = '%'||#{searchKeyword}||'%' order by article
-	</select>
-	
-	<select id="searchHeelList" resultType="shoes">
-		SELECT * FROM shoes where heel = '%'||#{searchKeyword}||'%' order by article
-	</select>
-	
-	<select id="searchFootSizeList" resultType="shoes">
-		SELECT * FROM shoes where footSize = '%'||#{searchKeyword}||'%' order by article
+		        and ((m.material like '%'||#{searchKeyword}||'%') or (m.materialCon like '%'||#{searchKeyword}||'%'))
+		    order by s.article
 	</select>
 	
 	<select id="searchBrandList" resultType="shoes">
 		select s.*, tc.brandcon from shoes s, brand b
 		    where s.brand = b.brand
-		        and ((b.brand = '%'||#{searchKeyword}||'%') or (b.brandcon = '%'||#{searchKeyword}||'%'))
-		    order by s.article;
+		        and ((b.brand like '%'||#{searchKeyword}||'%') or (b.brandcon like '%'||#{searchKeyword}||'%'))
+		    order by s.article
+	</select>
+
+	
+	<select id="checkFirstCategoryList" resultType="shoes">
+		SELECT s.* FROM shoes s, firstCategory fc
+			WHERE s.firstCategory = fc.firstCategory
+				and fc.firstCategory IN
+			<foreach collection="chkList" item="item" open="(" close=")" separator=",">
+			 	#{item.firstCategory}
+			</foreach>
+			ORDER BY s.article
 	</select>
 	
-	<select id="searchModelIdList" resultType="shoes">
-		SELECT * FROM shoes where modelId = '%'||#{searchKeyword}||'%' order by article
+	<select id="checkSecondCategoryList" resultType="shoes">
+		SELECT s.* FROM shoes s, secondCategory sc
+			WHERE s.secondCategory = fc.secondCategory
+				and fc.secondCategory IN
+			<foreach collection="chkList" item="item" open="(" close=")" separator=",">
+			 	#{item.secondCategory}
+			</foreach>
+			ORDER BY s.article
+	</select>
+	
+	<select id="checkThirdCategoryList" resultType="shoes">
+		SELECT s.* FROM shoes s, thirdCategory tc
+			WHERE s.thirdCategory = fc.thirdCategory
+				and fc.thirdCategory IN
+			<foreach collection="chkList" item="item" open="(" close=")" separator=",">
+			 	#{item.thirdCategory}
+			</foreach>
+			ORDER BY s.article
+	</select>
+	
+	<select id="checkMaterialList" resultType="shoes">
+		SELECT s.* FROM shoes s, material m
+			WHERE s.material = fc.material
+				and fc.material IN
+			<foreach collection="chkList" item="item" open="(" close=")" separator=",">
+			 	#{item.material}
+			</foreach>
+			ORDER BY s.article
+	</select>
+	
+	<select id="checkBrandList" resultType="shoes">
+		SELECT s.* FROM shoes s, brand b
+			WHERE s.brand = fc.brand
+				and fc.brand IN
+			<foreach collection="chkList" item="item" open="(" close=")" separator=",">
+			 	#{item.brand}
+			</foreach>
+			ORDER BY s.article
+	</select>
+	
+	<select id="checkPriceList" resultType="shoes">
+		SELECT s.* FROM shoes s, price p
+			WHERE s.price = fc.price
+				and fc.price IN
+			<foreach collection="chkList" item="item" open="(" close=")" separator=",">
+			 	#{item.price}
+			</foreach>
+			ORDER BY s.article
 	</select>
 
 </mapper>

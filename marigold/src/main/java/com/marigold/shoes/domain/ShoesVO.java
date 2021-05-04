@@ -1,14 +1,20 @@
 package com.marigold.shoes.domain;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ShoesVO {
 	
+	@XmlAttribute
 	private String article;
 	private String firstCategory;
 	private String secondCategory;
 	private String thirdCategory;
 	private String productName;
 	private String specialDay;
-	private int season;
+	private String season;
 	private String color;
 	private String material;
 	private int price;
@@ -36,7 +42,7 @@ public class ShoesVO {
 	}
 
 	public ShoesVO(String article, String firstCategory, String secondCategory, String thirdCategory,
-			String productName, String specialDay, int season, String color, String material, int price, int heel,
+			String productName, String specialDay, String season, String color, String material, int price, int heel,
 			int footSize, String brand, String modelId) {
 		super();
 		this.article = article;
@@ -103,11 +109,11 @@ public class ShoesVO {
 		this.specialDay = specialDay;
 	}
 
-	public int getSeason() {
+	public String getSeason() {
 		return season;
 	}
 
-	public void setSeason(int season) {
+	public void setSeason(String season) {
 		this.season = season;
 	}
 
@@ -181,7 +187,7 @@ public class ShoesVO {
 		result = prime * result + ((modelId == null) ? 0 : modelId.hashCode());
 		result = prime * result + price;
 		result = prime * result + ((productName == null) ? 0 : productName.hashCode());
-		result = prime * result + season;
+		result = prime * result + ((season == null) ? 0 : season.hashCode());
 		result = prime * result + ((secondCategory == null) ? 0 : secondCategory.hashCode());
 		result = prime * result + ((specialDay == null) ? 0 : specialDay.hashCode());
 		result = prime * result + ((thirdCategory == null) ? 0 : thirdCategory.hashCode());
@@ -238,7 +244,10 @@ public class ShoesVO {
 				return false;
 		} else if (!productName.equals(other.productName))
 			return false;
-		if (season != other.season)
+		if (season == null) {
+			if (other.season != null)
+				return false;
+		} else if (!season.equals(other.season))
 			return false;
 		if (secondCategory == null) {
 			if (other.secondCategory != null)

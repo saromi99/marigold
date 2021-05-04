@@ -85,6 +85,13 @@ public class ShoesController {
 		return boardList;
 	}
 /*	
+	@RequestMapping("/checkFirstCategoryList")
+	public @ResponseBody List<ShoesVO> checkFirstCategoryList() {
+		ShoesVO result = shoesService.getOne(null);
+		List<ShoesVO> foreachTest = shoesService.getList(result);
+		return result;
+	}
+	
 	@RequestMapping(value="/dataTransformLastData.do")
 	@ResponseBody
 	public ShoesVO dataTransformLastData(ShoesVO vo){

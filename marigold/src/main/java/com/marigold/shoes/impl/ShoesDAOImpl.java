@@ -1,5 +1,6 @@
 package com.marigold.shoes.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -120,6 +121,13 @@ public class ShoesDAOImpl implements ShoesDAO {
 	@Override
 	public List<ShoesVO> searchModelIdList(ShoesVO vo) {
 		return session.selectList("ShoesDAO.searchModelIdList", vo);
+	}
+
+	@Override
+	public List<ShoesVO> checkFirstCategoryList(List<ShoesVO> chkList) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("chkList",chkList);
+		return session.selectList("ShoesDAO.checkFirstCategoryList", map);
 	}
 
 }

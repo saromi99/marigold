@@ -122,4 +122,9 @@ public class ShoesServiceImpl implements ShoesService {
 		return dao.searchModelIdList(vo);
 	}
 
+	@Override
+	public List<ShoesVO> checkFirstCategoryList(List<ShoesVO> result) {
+		return dao.checkFirstCategoryList(result);
+	}
+
 }
