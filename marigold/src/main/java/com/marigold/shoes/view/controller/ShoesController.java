@@ -1,6 +1,7 @@
 package com.marigold.shoes.view.controller;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -91,17 +93,22 @@ public class ShoesController {
 	
 	@RequestMapping(value="/checkBoxList.do")
 	 @ResponseBody 
-	 public void checkBoxList(
-			 HttpServletRequest request, 
-			 HttpServletResponse response,
-			 @RequestParam(value="firstCategory", required = false) List<String> firstCategory,
-			 @RequestParam(value="secondCategory", required = false) List<String> secondCategory,
-			 @RequestParam(value="thirdCategory", required = false) List<String> thirdCategory,
-			 @RequestParam(value="material", required = false) List<String> material,
-			 @RequestParam(value="brand", required = false) List<String> brand,
-			 @RequestParam(value="price", required = false) List<String> price
-			 ) {
-		
+	 public String checkBoxList(HttpServletRequest request, ModelMap model) throws Exception{
+		System.out.println("check box 처리");
+		 List<String> firstCategory = Arrays.asList(request.getParameterValues("firstCategory"));
+		 List<String> secondCategory = Arrays.asList(request.getParameterValues("secondCategory"));
+		 List<String> thirdCategory = Arrays.asList(request.getParameterValues("thirdCategory"));
+		 List<String> material = Arrays.asList(request.getParameterValues("material"));
+		 List<String> brand = Arrays.asList(request.getParameterValues("brand"));
+		 List<String> price = Arrays.asList(request.getParameterValues("price"));
+	
+		 model.addAttribute("checkBoxList", firstCategory);
+		 model.addAttribute("checkBoxList", secondCategory);
+		 model.addAttribute("checkBoxList", thirdCategory);
+		 model.addAttribute("checkBoxList", material);
+		 model.addAttribute("checkBoxList", brand);
+		 model.addAttribute("checkBoxList", price);
+		 return 
 	}
 	/*
 	@RequestMapping(value="/dataTransformXml.do")
